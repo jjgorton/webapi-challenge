@@ -26,7 +26,8 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
-    -
+    - the homies req and res are objects that give use access to the http requests.
+    - lots of usefule built in middleware like .use() and Route().
 
 - [ ] Describe Middleware?
 
