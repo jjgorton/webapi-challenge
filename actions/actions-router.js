@@ -1,6 +1,7 @@
 const express = require('express');
 
 const db = require('../data/helpers/actionModel');
+const projectHelper = require('../data/helpers/projectModel');
 
 const router = express.Router();
 
@@ -34,9 +35,15 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
 	const actionData = req.body;
-	if (!actionData.project_id) {
-		res.status(400).json({ errorMessage: 'Please provide an existing project id.' });
-	}
+	// if (!actionData.project_id) {
+	// 	res.status(400).json({ errorMessage: 'Please provide an existing project id.' });
+	// }
+	projectHelper.getProjectActions(actionData.project_id).then((project) => {
+		if (project.length === 0) {
+			res.status(400).json({ errorMessage: 'Please provide an existing project id.' });
+		}
+	});
+
 	if (!actionData.description) {
 		res.status(400).json({ errorMessage: 'Please provide a description.' });
 	}
@@ -76,6 +83,12 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
 	const actionId = req.params.id;
 	const actionData = req.body;
+
+	projectHelper.getProjectActions(actionData.project_id).then((project) => {
+		if (project.length === 0) {
+			res.status(400).json({ errorMessage: 'Please provide an existing project id.' });
+		}
+	});
 
 	if (!actionData.project_id || !actionData.description || !actionData.notes) {
 		res.status(400).json({ errorMessage: 'Please provide all required data.' });

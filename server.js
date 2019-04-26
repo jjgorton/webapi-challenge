@@ -19,7 +19,7 @@ server.get('/', (req, res) => {
 // const idMatcher = (req, res, next) => {
 // 	const id = req.body.project_id;
 // 	const check = projectHelper.getProjectActions(id);
-// 	if (check) {
+// 	if (check === null) {
 // 		console.log('passed', id, check);
 // 		next();
 // 	} else {
