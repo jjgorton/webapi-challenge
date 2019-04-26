@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+    -
+
 - [ ] Describe Middleware?
+
+    - Almost all of Express is middleware.  Middleware is simply a function that have access to the req and res objects and the next() function.  Three types of middleware are built-in (included with Express), 3rd party (built by someone else), and custom(built by the developer).
 
 - [ ] Describe a Resource?
 
+    -Resources are the Database and or helper functions that are used to build CRUD operations and allow devolpers use the API.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+    -Status Messages
+
 - [ ] How can we partition our application into sub-applications?
+
+    - Server Side Routing
 
 ## Project Setup
 
